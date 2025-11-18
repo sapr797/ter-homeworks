@@ -1,29 +1,16 @@
-output "all_vms" {
-  description = "List of all VMs as dictionaries"
-  value = concat(
-    # ВМ из count (web-1, web-2)
-    [
-      for vm in yandex_compute_instance.web : {
-        name = vm.name
-        id   = vm.id
-        fqdn = vm.fqdn
-      }
-    ],
-    # ВМ из for_each (main, replica)
-    [
-      for vm_key, vm in yandex_compute_instance.database_vm : {
-        name = vm.name
-        id   = vm.id
-        fqdn = vm.fqdn
-      }
-    ],
-    # ВМ storage
-    [
-      {
-        name = yandex_compute_instance.storage.name
-        id   = yandex_compute_instance.storage.id
-        fqdn = yandex_compute_instance.storage.fqdn
-      }
-    ]
-  )
+# outputs.tf - выходные значения
+
+output "web_servers_public_ips" {
+  description = "Публичные IP адреса web серверов"
+  value       = aws_instance.web_servers[*].public_ip
+}
+
+output "web_servers_private_ips" {
+  description = "Приватные IP адреса web серверов"
+  value       = aws_instance.web_servers[*].private_ip
+}
+
+output "ansible_inventory_path" {
+  description = "Путь к сгенерированному inventory файлу"
+  value       = local.ansible_inventory_path
 }

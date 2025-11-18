@@ -1,32 +1,25 @@
-###cloud vars
-variable "token" {
+# variables.tf - объявление переменных
+
+variable "aws_region" {
+  description = "AWS регион"
   type        = string
-  description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
+  default     = "us-east-1"
 }
 
-variable "cloud_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
+variable "instance_count" {
+  description = "Количество инстансов"
+  type        = number
+  default     = 2
 }
 
-variable "folder_id" {
+variable "instance_type" {
+  description = "Тип инстанса EC2"
   type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
+  default     = "t3.micro"
 }
 
-variable "default_zone" {
+variable "key_name" {
+  description = "Имя SSH ключа в AWS"
   type        = string
-  default     = "ru-central1-a"
-  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
-}
-variable "default_cidr" {
-  type        = list(string)
-  default     = ["10.0.1.0/24"]
-  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
-}
-
-variable "vpc_name" {
-  type        = string
-  default     = "develop"
-  description = "VPC network&subnet name"
+  default     = "your-key-name"
 }

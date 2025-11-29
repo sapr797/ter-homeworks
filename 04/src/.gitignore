@@ -9,4 +9,8 @@
 *.tfstate.*
 
 # own secret vars store.
-personal.auto.tfvars
+personal.auto.tfvars*.pem
+*.key
+*.pub
+ssh*
+id_*

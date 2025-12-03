@@ -1,12 +1,47 @@
-# Local .terraform directories and files
-**/.terraform/*
-.terraform*
-
-!.terraformrc
-
-# .tfstate files
+# Terraform кэш
+.terraform/
 *.tfstate
-*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl
 
-# own secret vars store.
-personal.auto.tfvars
+# Файлы переменных (с реальными секретами)
+*.tfvars
+
+# Ключи
+*.pem
+*.p12
+*.key
+*.pub
+
+# Логи
+*.log
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+EOFcat > 02/src/.gitignore << 'EOF'
+# Terraform кэш
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Файлы переменных (с реальными секретами)
+*.tfvars
+
+# Ключи
+*.pem
+*.p12
+*.key
+*.pub
+
+# Логи
+*.log
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -20,29 +20,33 @@ ter-hw-03/
 │ │ └── fixed_template.tpl # Исправленный шаблон (задание 8*)
 │ └── inventory.ini # Сгенерированный inventory (после terraform apply)
 
+text
 
 ## Установка и настройка
 
 1. Клонируйте репозиторий:
-
-git clone sapr797/ter-homeworks.git
+```bash
+git clone <ваш-репозиторий>
 cd ter-hw-03/src
-Настройте переменных
+Настройте переменные:
 
+bash
 cp terraform.tfvars.example terraform.tfvars
 # Отредактируйте terraform.tfvars со своими значениями
 Инициализируйте Terraform:
 
+bash
 terraform init
 Создайте SSH ключ (если нет):
 
+bash
 ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
 Планирование и применение:
 
+bash
 terraform plan
 terraform apply
 Выполненные задания
-
 Задание 1
 Изучена структура проекта
 
@@ -89,6 +93,7 @@ json
 Задание 7* (необязательное)
 Выражение для удаления 3-го элемента из subnet_ids и subnet_zones:
 
+hcl
 {
   network_id   = local.vpc_example.network_id
   subnet_ids   = [for i, id in local.vpc_example.subnet_ids : id if i != 2]
@@ -97,6 +102,7 @@ json
 Задание 8* (необязательное)
 Исправленная ошибка в шаблоне:
 
+hcl
 ${i["name"]} ansible_host=${i["nat_ip_address"]} platform_id=${i["platform_id"]}
 (были незакрытая фигурная скобка и лишний проблом)
 
@@ -108,7 +114,7 @@ Terraform выражения:
 [for i in range(1, 97) : format("rc%02d", i) if (i % 10 != 0 && i % 10 != 7 && i % 10 != 8 && i % 10 != 9) || i == 19]
 
 Запуск проекта
-
+bash
 # Проверка конфигурации
 terraform validate
 

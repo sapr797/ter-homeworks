@@ -1,0 +1,7 @@
+# Пример файла переменных
+# Скопируйте как terraform.tfvars и заполните своими значениями
+
+token        = "ваш_oauth_токен"
+cloud_id     = "ваш_cloud_id"
+folder_id    = "ваш_folder_id"
+default_zone = "ru-central1-a"

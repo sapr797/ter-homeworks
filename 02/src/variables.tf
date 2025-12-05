@@ -1,38 +1,34 @@
-# variables.tf 
-###cloud vars
-
+# Основные переменные облака (Задание 1)
 variable "cloud_id" {
   type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
+  description = "Cloud ID от Yandex Cloud"
 }
 
 variable "folder_id" {
   type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
-}
-
-variable "default_zone" {
-  type        = string
-  default     = "ru-central1-a"
-  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
-}
-
-variable "default_cidr" {
-  type        = list(string)
-  default     = ["10.0.1.0/24"]
-  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+  description = "Folder ID от Yandex Cloud"
 }
 
 variable "vpc_name" {
   type        = string
   default     = "develop"
-  description = "VPC network & subnet name"
+  description = "Имя VPC сети"
 }
 
-###ssh vars
+variable "default_zone" {
+  type        = string
+  default     = "ru-central1-a"
+  description = "Зона по умолчанию"
+}
 
+variable "default_cidr" {
+  type        = list(string)
+  default     = ["10.129.0.0/24"]
+  description = "CIDR блок по умолчанию"
+}
+
+# SSH переменные (Задание 1)
 variable "vms_ssh_public_root_key" {
   type        = string
-  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINawIYwoojaPGgG6fbvxwnJ/WllR3f4yVx5ZMnWmA85W iru@DESKTOP-IUA6EA7"
-  description = "Публичная часть SSH-ключа для доступа к виртуальным машинам"
+  description = "Публичная часть SSH-ключа для доступа к ВМ"
 }
